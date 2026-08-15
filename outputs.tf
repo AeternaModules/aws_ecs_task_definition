@@ -24,7 +24,7 @@ output "ecs_task_definitions_enable_fault_injection" {
 }
 output "ecs_task_definitions_ephemeral_storage" {
   description = "Map of ephemeral_storage values across all ecs_task_definitions, keyed the same as var.ecs_task_definitions"
-  value       = { for k, v in aws_ecs_task_definition.ecs_task_definitions : k => v.ephemeral_storage if v.ephemeral_storage != null && length(v.ephemeral_storage) > 0 }
+  value       = { for k, v in aws_ecs_task_definition.ecs_task_definitions : k => one(v.ephemeral_storage) if v.ephemeral_storage != null && length(v.ephemeral_storage) > 0 }
 }
 output "ecs_task_definitions_execution_role_arn" {
   description = "Map of execution_role_arn values across all ecs_task_definitions, keyed the same as var.ecs_task_definitions"
@@ -56,7 +56,7 @@ output "ecs_task_definitions_placement_constraints" {
 }
 output "ecs_task_definitions_proxy_configuration" {
   description = "Map of proxy_configuration values across all ecs_task_definitions, keyed the same as var.ecs_task_definitions"
-  value       = { for k, v in aws_ecs_task_definition.ecs_task_definitions : k => v.proxy_configuration if v.proxy_configuration != null && length(v.proxy_configuration) > 0 }
+  value       = { for k, v in aws_ecs_task_definition.ecs_task_definitions : k => one(v.proxy_configuration) if v.proxy_configuration != null && length(v.proxy_configuration) > 0 }
 }
 output "ecs_task_definitions_region" {
   description = "Map of region values across all ecs_task_definitions, keyed the same as var.ecs_task_definitions"
@@ -72,7 +72,7 @@ output "ecs_task_definitions_revision" {
 }
 output "ecs_task_definitions_runtime_platform" {
   description = "Map of runtime_platform values across all ecs_task_definitions, keyed the same as var.ecs_task_definitions"
-  value       = { for k, v in aws_ecs_task_definition.ecs_task_definitions : k => v.runtime_platform if v.runtime_platform != null && length(v.runtime_platform) > 0 }
+  value       = { for k, v in aws_ecs_task_definition.ecs_task_definitions : k => one(v.runtime_platform) if v.runtime_platform != null && length(v.runtime_platform) > 0 }
 }
 output "ecs_task_definitions_skip_destroy" {
   description = "Map of skip_destroy values across all ecs_task_definitions, keyed the same as var.ecs_task_definitions"
